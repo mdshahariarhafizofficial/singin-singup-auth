@@ -5,13 +5,24 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink 
+        to="/" 
+        className={
+          ({isActive})=> isActive? "w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2": "w-full text-black border-2 border-gray-200 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to="/login">login</NavLink>
+        <NavLink 
+        to="/login"
+        className={
+          ({isActive})=> isActive? "w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2": "w-full text-black border-2 border-gray-200 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2"}
+        >login</NavLink>
       </li>
       <li>
-        <NavLink to="/register">register</NavLink>
+        <NavLink 
+        to="/register"
+        className={
+          ({isActive})=> isActive? "w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2": "w-full text-black border-2 border-gray-200 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2"}
+        >register</NavLink>
       </li>
     </>
   );
@@ -46,17 +57,17 @@ const Navbar = () => {
             }
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <button type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-bold rounded-sm text-xl  px-5 py-2.5 text-center me-2 mb-2">Simple Login Auth</button>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 flex gap-6">
             {
                 links
             }
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Contact Us</button>
       </div>
     </div>
   );
