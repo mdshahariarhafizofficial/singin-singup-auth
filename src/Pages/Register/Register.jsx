@@ -1,10 +1,28 @@
 import React from "react";
 import { NavLink, Link } from "react-router";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Firebase/firebase_init";
 
 const Register = () => {
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(name, email, password);
+
+    createUserWithEmailAndPassword(auth, email, password, name)
+    .then((result)=>{
+      console.log(result);
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
+
   return (
     <div className="bg-linear-65 from-purple-500 pt-20 to-pink-500 h-screen">
-      <form className="max-w-md mx-auto bg-white p-5 space-y-5 rounded-xl">
+      <form onSubmit={handleRegister} className="max-w-md mx-auto bg-white p-5 space-y-5 rounded-xl">
         <div>
           <h2 className="text-center text-3xl font-bold">Registration Form</h2>
           <div className="my-5 flex gap-0">
@@ -53,9 +71,9 @@ const Register = () => {
           </svg>
           <input
             type="input"
+            name="name"
             required
             placeholder="Username"
-            pattern="[A-Za-z][A-Za-z0-9\-]*"
             minLength="3"
             maxLength="30"
             title="Only letters, numbers or dash"
@@ -80,7 +98,7 @@ const Register = () => {
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
             </g>
           </svg>
-          <input type="email" placeholder="mail@site.com" required />
+          <input type="email" name="email" placeholder="mail@site.com" required />
         </label>
         <div className="validator-hint hidden">Enter valid email address</div>
 
@@ -104,6 +122,7 @@ const Register = () => {
           </svg>
           <input
             type="password"
+            name="password"
             required
             placeholder="Password"
             minLength="8"
@@ -114,7 +133,7 @@ const Register = () => {
 
         {/* Button */}
         <button
-          type="button"
+          type="submit"
           className="w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
           Register Now
