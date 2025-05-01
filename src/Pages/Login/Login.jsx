@@ -1,22 +1,23 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import { auth } from "../../Firebase/firebase_init";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 const Login = () => {
+  const {logInUser} = use(AuthContext);
   const handleLogIn = (e)=>{
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
     
-    signInWithEmailAndPassword(auth, email, password)
+    logInUser(email, password)
     .then((result)=>{
       console.log(result);
+      
     }).catch((error)=>{
       console.log(error);
+      
     })
-    
   }
 
   return (
