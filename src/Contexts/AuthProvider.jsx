@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../Firebase/firebase_init';
 
 const AuthProvider = ({children}) => {
@@ -12,14 +12,9 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    // onAuthStateChanged(auth, (currentUser)=>{
-    //     if (currentUser) {
-    //         console.log("User Found :", currentUser);
-            
-    //     }else{
-    //         console.log("User Not Found :", currentUser);
-    //     }
-    // })
+    const logOut = () =>{
+        return signOut(auth)
+    }
 
     useEffect( ()=>{
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -35,6 +30,7 @@ const AuthProvider = ({children}) => {
         user,
         createUser,
         logInUser,
+        logOut,
     }
 
     return (
