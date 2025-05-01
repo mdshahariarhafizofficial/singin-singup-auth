@@ -40,13 +40,22 @@ const Navbar = () => {
         >register</NavLink>
       </li> 
       {
-        user && <li>
+        user && <>
+        <li>
         <NavLink 
         to="/order"
         className={
           ({isActive})=> isActive? "w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2": "w-full text-black border-2 border-gray-200 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2"}
         >Order</NavLink>
       </li>
+      <li>
+        <NavLink 
+        to="/profile"
+        className={
+          ({isActive})=> isActive? "w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2": "w-full text-black border-2 border-gray-200 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center mb-2"}
+        >Profile</NavLink>
+      </li>
+        </>
       }
     </>
   );
