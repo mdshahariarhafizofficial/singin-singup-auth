@@ -8,6 +8,8 @@ import Root from './Layouts/Root.jsx'
 import Login from './Pages/Login/Login.jsx'
 import Register from './Pages/Register/Register.jsx'
 import AuthProvider from './Contexts/AuthProvider.jsx'
+import Order from './Pages/Order/Order.jsx'
+import PrivateRoutes from './Routes/PrivateRoutes/PrivateRoutes.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,12 @@ const router = createBrowserRouter([
       {
         path: '/register',
         Component: Register
+      },
+      {
+        path: 'order',
+        element: <PrivateRoutes>
+          <Order></Order>
+        </PrivateRoutes>
       }
     ]
   }
